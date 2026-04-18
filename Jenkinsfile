@@ -2,6 +2,9 @@ pipeline {
     agent any
 
     environment {
+        AWS_REGION = "us-east-1"
+        ECR_URL = "313772261399.dkr.ecr.us-east-1.amazonaws.com"
+
         SONAR_SCANNER = "C:\\DevSecOps\\sonar-scanner\\bin\\sonar-scanner.bat"
         TRIVY_PATH = "C:\\DevSecOps\\trivy\\trivy.exe"
     }
@@ -34,10 +37,22 @@ pipeline {
             }
         }
 
-        stage('Deploy') {
+         stage('ECR Login') {
             steps {
-                echo 'Deploying...'
-                bat 'docker-compose up -d'
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID', credentialsId: 'aws-creds', secretKeyVariable: 'AWS_SECRET_ACCESS_KEY')]) {
+                bat """
+                aws ecr get-login-password --region %%AWS_REGION%% | docker login --username AWS --password-stdin %%ECR_URL%%
+                """
+                }
+            }
+        }
+
+        stage('Push netflix-clone to ECR') {
+            steps {
+                bat """
+                docker tag netflix-clone-image:latest %ECR_URL%/netflix-clone-image:latest
+                docker push %ECR_URL%/netflix-clone-image:latest
+                """
             }
         }
     }
