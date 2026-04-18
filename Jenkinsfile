@@ -16,15 +16,14 @@ pipeline {
 
         stage('SonarQube Scan') {
             steps {
-                    withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-                        bat """
-                        \"${SONAR_SCANNER}\" ^
-                        -Dsonar.projectKey=user-management-app ^
-                        -Dsonar.sources=. ^
-                        -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.login=%SONAR_TOKEN%
-                        """
-                    }
+                withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
+                    bat """
+                    \"${SONAR_SCANNER}\" ^
+                    -Dsonar.projectKey=user-management-app ^
+                    -Dsonar.sources=. ^
+                    -Dsonar.host.url=http://localhost:9000 ^
+                    -Dsonar.login=%%SONAR_TOKEN%%
+                    """
                 }
             }
         }
@@ -54,3 +53,4 @@ pipeline {
             echo 'Pipeline failed. Check the logs.'
         }
     }
+}
