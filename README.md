@@ -5,7 +5,7 @@ This project demonstrates a cloud-native DevSecOps pipeline for deploying a secu
 The goal of this project is to implement a fully automated CI/CD pipeline with integrated security checks, ensuring that applications are built, scanned, and deployed securely in a production-like environment
 
 ### Architecture 🏗️
-![Diagram](./asset/Diagrame.jpg)
+![Diagram](./asset/diagrame.gif)
 
 ### CI/CD Pipeline Diagram 🔁
 ![CI/CD Diagram](./asset/1776537009981.jpg)
