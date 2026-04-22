@@ -7,6 +7,9 @@ The goal of this project is to implement a fully automated CI/CD pipeline with i
 ### Architecture 🏗️
 ![Diagram](./asset/Diagrame.jpg)
 
+### CI/CD Pipeline Diagram 🔁
+![CI/CD Diagram](./asset/1776537009981.jpg)
+
 ### Tech Stack 🛠️
 - Application : Flask (Web Framework)
 - Containerization : Docker
@@ -22,6 +25,9 @@ The goal of this project is to implement a fully automated CI/CD pipeline with i
 - Used Trivy to detect vulnerabilities in Docker images
 - Applied IAM roles to enforce secure access control
 - Followed DevSecOps “Shift-Left” principle
+
+### Application Screenshot 📸
+![Application](./asset/1776537009981d.jpg)
 
 ## Setup Instructions 🚀
 ### Prerequisites
@@ -57,3 +63,24 @@ docker compose up --build -d
 - Containerizing applications using Docker
 - Deploying applications securely on AWS (ECR, EC2, IAM)
 - Understanding real-world DevSecOps practices
+
+## Folder Structure 📂
+```text
+Secure-Flask-Web-Application-on-AWS/
+├── asset/
+├── docs/
+├── static/
+│   └── style.css
+├── templates/
+│   └── index.html
+├── .dockerignore
+├── .gitattributes
+├── app.py
+├── docker-compose.yml
+├── Dockerfile
+├── Jenkinsfile
+└── README.md
+```
+## Author 👤
+Sachintha Dilshan <br>
+LinkedIn: https://www.linkedin.com/in/sachilz/
